@@ -2646,21 +2646,21 @@ document.addEventListener("DOMContentLoaded", () => {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message })
-      });
-
+      const res = await fetch(
+        "https://getit-backend-6ljv.onrender.com/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message })
+        }
+      );
       const data = await res.json();
-
       if (res.ok && data.success) {
         showToast("✅ Message sent successfully!", "success");
         form.reset();
       } else {
         showToast(data.error || "❌ Failed to send message", "error");
       }
-
     } catch (err) {
       console.error(err);
       showToast("⚠️ Server error. Try again later.", "error");
@@ -2668,7 +2668,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setLoading(false);
     }
   });
-
 });
 </script>
 
